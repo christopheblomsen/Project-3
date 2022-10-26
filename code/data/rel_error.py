@@ -1,6 +1,11 @@
+from tkinter import S
 import numpy as np
 import matplotlib.pyplot as plt
 import pyarma as pa
+
+plt.rc('text', usetex=True)
+plt.rc('font', family='Helvetica')
+# plt.style.use('seaborn')
 
 """We define two functions since we need all simulation done before we can plot the error
 so max_error is here to find the maximum deviation between the analytical and numerical for both methods
@@ -40,35 +45,36 @@ def rel_err(r_true, r_num):
 
 xrk4000 = pa.cube()
 xrk4000.load('position_RK4_4000.bin')
-xrk4000 = np.array(xrk4000).reshape(3, 4000)
+xrk4000 = np.array(xrk4000)[:,:,0].T
 
 xrk8000 = pa.cube()
 xrk8000.load('position_RK4_8000.bin')
-xrk8000 = np.array(xrk8000).reshape(3, 8000)
+xrk8000 = np.array(xrk8000)[:,:,0].T
 
 xrk16000 = pa.cube()
 xrk16000.load('position_RK4_16000.bin')
-xrk16000 = np.array(xrk16000).reshape(3, 16000)
+xrk16000 = np.array(xrk16000)[:,:,0].T
 
 xrk32000 = pa.cube()
 xrk32000.load('position_RK4_32000.bin')
-xrk32000 = np.array(xrk32000).reshape(3, 32000)
+xrk32000 = np.array(xrk32000)[:,:,0].T
 
 xFE4000 = pa.cube()
 xFE4000.load('position_FE_4000.bin')
-xFE4000 = np.array(xrk4000).reshape(3, 4000)
+xFE4000 = np.array(xFE4000)[:,:,0].T
 
 xFE8000 = pa.cube()
 xFE8000.load('position_FE_8000.bin')
-xFE8000 = np.array(xrk8000).reshape(3, 8000)
+xFE8000 = np.array(xFE8000)[:,:,0].T
 
 xFE16000 = pa.cube()
 xFE16000.load('position_FE_16000.bin')
-xFE16000 = np.array(xrk16000).reshape(3, 16000)
+xFE16000 = np.array(xFE16000)[:,:,0].T
 
 xFE32000 = pa.cube()
 xFE32000.load('position_FE_32000.bin')
-xFE32000 = np.array(xrk32000).reshape(3, 32000)
+xFE32000 = np.array(xFE32000)[:,:,0].T
+
 
 ###############analytical solution#####################
 
@@ -105,6 +111,13 @@ for time in  time_list:
    z = z0 * np.cos(w_z * time)
    r_analytical.append(np.array([x, y, z]))
 
+# print(len(r_analytical))
+# To check if our solution is correct 
+plt.figure()
+plt.scatter(xFE32000[0,:], xFE32000[1, :], s=.7)
+plt.scatter(r_analytical[3][0], r_analytical[3][1], s=.7)
+plt.axis('equal')
+
 
 rel_err_RK4_4000 = rel_err(r_analytical[0], xrk4000)
 rel_err_RK4_8000 = rel_err(r_analytical[1], xrk8000)
@@ -117,23 +130,27 @@ rel_err_FE_16000 = rel_err(r_analytical[2], xFE16000)
 rel_err_FE_32000 = rel_err(r_analytical[3], xFE32000)
 
 
-fig, [ax1, ax2] = plt.subplots(2, 1)
+fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(12, 10))
 ax1.plot(time_list[0], rel_err_RK4_4000, label = 'n = 4000') # log2 on the y-axis
 ax1.plot(time_list[1], rel_err_RK4_8000, label = 'n = 8000')
 ax1.plot(time_list[2], rel_err_RK4_16000, label = 'n = 16000')
 ax1.plot(time_list[3],rel_err_RK4_32000, label = 'n = 32000')
-ax1.set_ylabel('Relative error [-]')
-ax1.text(20, 0.013, 'Runge Kutta 4')
+ax1.set_ylabel('log Relative error [-]')
+ax1.set_xlim(0, 55)
+ax1.set_yscale('log')
+ax1.set_title('Runge Kutta 4')
 
 ax2.plot(time_list[0], rel_err_FE_4000, label = 'n = 4000')
 ax2.plot(time_list[1], rel_err_FE_8000, label = 'n = 8000')
 ax2.plot(time_list[2], rel_err_FE_16000, label = 'n = 16000')
 ax2.plot(time_list[3], rel_err_FE_32000, label = 'n = 32000')
 ax2.set_xlabel('t [$\mu$s]')
-ax2.set_ylabel('Relative error [-]')
-ax2.text(20, 1.8, 'Forward Euler')
+ax2.set_xlim(0, 55)
+ax2.set_ylabel('log Relative error [-]')
+ax2.set_title('Forward Euler')
+ax2.set_yscale('log')
 plt.legend()
-#plt.savefig('convergence.pdf')
+plt.savefig('convergence.pdf')
 plt.show()
 #######################calculating r_err########################
 del_max_RK4 = []
@@ -156,31 +173,8 @@ rate_RK4 = rate(del_max_RK4, h_k)
 rate_FE = rate(del_max_FE, h_k)
 print(f"Convergence rate_RK4: {rate_RK4}")
 print(f"Convergence rate_FE: {rate_FE}")
-plt.loglog(del_max_FE, label='FE')
-plt.loglog(del_max_RK4, linestyle='dashed', label='RK4')
+plt.plot(del_max_FE, "^-", label='FE')
+plt.plot(del_max_RK4, "*-", label='RK4')
+plt.savefig('del_max.pdf')
 plt.legend()
 plt.show()
-
-
-##################old
-
-# The time step
-h = np.array([50 / 4000, 50/8000, 50/16000, 50/32000])
-
-# h_test = np.array([50/4, 50/8])
-
-# r1_a = np.random.randint(1, 5, size=4)
-# r1_b = np.random.randint(1, 5, size=4)
-
-# r2_a = np.random.randint(1, 5, size=8)
-# r2_b = np.random.randint(1, 5, size=8)
-
-# print(r1_a)
-# print(r1_b)
-# print(r2_a)
-# print(r2_b)
-# del1 = max_error(r1_a, r1_b)
-# del2 = max_error(r2_a, r2_b)
-
-# print(del1)
-# print(del2)

@@ -25,7 +25,7 @@ We simulate the motion of a particle in the Penning trap for $50 \mu s$ with ini
 \label{fig:z_t_8}
 \end{figure}
 
-The motion of the particle in the $z$-direction over time is shown in \autoref{fig:z_t_8}
+We show the motion of the particle in the $z$-direction over time in \autoref{fig:z_t_8}
 The solution is a harmonic oscillator, as seen from \autoref{eq:eom_z}. The dashed lines in the figure indicate the anticipated period of $T = \frac{2\pi}{\omega_z} \approx 9$ $\mu$s.
 
 %8.5 and 8.6
@@ -36,21 +36,32 @@ The solution is a harmonic oscillator, as seen from \autoref{eq:eom_z}. The dash
 \label{fig:converge}
 \end{figure}
 
-We run the simulation with decreasing time steps to test the convergence of FE and RK4.
+We simulate decreasing time steps to test the convergence of FE and RK4.
 We divide our domain into $4000$ and double the number of steps consecutively three times,
 resulting in four simulations with decreasing time steps. The results are in \autoref{fig:converge}.
 %%%%%%%%%%%%%%
 We see from this plot that the relative error in the RK4 solution is roughly two orders of magnitude lower
 than that of the FE solution. However, the rate of convergence is higher for FE than for
-RK4. This is also confirmed by the convergence rate, which is $r_{\text{RK4}} \approx 1$ and $r_{\text{FE}} \approx 1.4$.
+RK4. This is also confirmed by the convergence rate, which is $r_{\text{RK4}} \approx 1$ and $r_{\text{FE}} \approx 1.4$. 
+The formula used to calculate the convergence rate is shown in \autoref{sec:app}. Since the global error of FE is $h$ and RK4 is $h^2$
+We expect to see the RK4 algorithm converge faster as the time step decreases. However, this is not the case, and we think that it can 
+be since our RK4 algorithm is already good enough with smaller time step, as the Forward-Euler algorithm, as discussed just below,
+perform poorly with bigger time step. 
 
-The formula for calculating the convergence rate is
-shown in \autoref{sec:app}.
-We would expect RK4 to give a convergence rate of $4$.
-revise: check this!
-The deviation might be because we
-have hit some threshold accuracy for the methods. We need to learn how to verify this.
-It seems likely that there is some small error in our code.
+\begin{figure}
+\centering
+\includegraphics[scale = 1]{../figures/del_max.pdf}
+\caption{}
+\label{fig:del_max}
+\end{figure}
+
+We can see that the Forward-Euler algorithm could be more accurate than the Runge-Kutta fourth-order algorithm. This is to be
+expected, but the error is more significant than we would expect, as seen in \autoref{fig:del_max}. Also, we observe that the error does not diminish 
+as much as expected since the error is proportional to $dt^2$. From this, we can think there is still some small error in the code but
+not big enough to discard any results. 
+
+
+
 
 %8.2 and 8.4
 To look at the effect of the Coulomb interaction, we add another particle to the mix with the initial
@@ -74,7 +85,7 @@ conditions
 \includegraphics[scale=0.7]{../figures/xy_plane_int.pdf}
 \caption{Plot of Particle 1 (blue) and Particle 2 (orange) with and without
 the effects from the Coulomb interactions. The simulations start in the right half of the
-figure, and the particles 'orbit' clockwise about the trap's centre. The upper and lower bounds on Particle 1's trajectory's analytical solutions are displayed as a green and black circle.} %
+figure, and the particles 'orbit' clockwise about the trap's centre. The upper and lower bounds on Particle 1's analytical solutions are displayed as green and black circles.} %
 \label{fig:xy_plane}
 \end{figure}
 
@@ -103,8 +114,8 @@ Particle 2 seems to have a compressed trajectory with denser precessions.
 \includegraphics[scale = 0.7]{../figures/z_phase_noint.pdf}
 \includegraphics[scale = 0.7]{../figures/z_phase_int.pdf}
 \caption{Phase space trajectories (z, w) of Particle 1 and Particle 2. Above, Particle 1 is blue, and Particle 2 is orange.
-The simulations for the topmost plot were run neglecting Coulomb interactions. The bottommost simulation includes Coulomb interactions. In the bottom figure the particle trajectories are drawn in
-seperate plots for clarity, the colour indicates the distance between the particles. The colour bar scale is
+The simulations for the topmost plot were run neglecting Coulomb interactions. The bottommost simulation includes Coulomb interactions. In the bottom figure, we draw the particle trajectories in
+separate plots for clarity, the colour indicates the distance between the particles. The colour bar scale is
 $\mu$m.}
 \label{fig:phase_z}
 \end{figure}
@@ -137,7 +148,7 @@ crosses $v=0$ in the figure.
 The the equation of motion for a particle in the x-direction \autoref{eq:eom_x} has three variables, $x$, $\dot{x}$ and $y$.
 As in the $z$-direction, the particle's energy is conserved. Furthermore, we see a transition of energy between potential energy. 
 Depending on the position through both $x$ and $y$ and the kinetic energy. If we were to simulate this for longer, we expect
-the trajectory to close in on itself after one orbit about the trap's centre, encircling a torus in 3D phase space. This is because the particle's energy is conserved, and three initial conditions, $x_0$, $y_0$ and $u_0$, would then uniquely determine its path through phase space.
+the trajectory to close in on itself after one orbit about the trap's centre, encircling a torus in 3D phase space. This is because the particle's energy is conserved, and three initial conditions, $x_0$, $y_0$ and $u_0$, would then uniquely determine its path through phase space. \cite{leinaas:klasmek}
 The top figure in \autoref{fig:phase_x} is what the torus would look like from the side, whereas a trajectory like those seen in \autoref{fig:xy_plane} is what it would look like top down, that is, looking through the doughnut.
 In \autoref{sec:app} we see a part of the torus.
 
@@ -163,8 +174,8 @@ correspond to simulating $100$ particles individually.
 
 \begin{figure}
 \centering
-\includegraphics[scale = 0.7]{../figures/fraction_left_omega.pdf}
-\caption{The fraction of the initial $100$ particles left after $500$ $\mu$s in the Penning trap with an ocsillating $\bold{E}$-field over
+\includegraphics[width=1.\linewidth]{../figures/fraction_left_omega.pdf}
+\caption{The fraction of the initial $100$ particles left after $500$ $\mu$s in the Penning trap with an oscillating $\bold{E}$-field over
 the oscillation frequency. The simulations were run with three different amplitudes $f$. The angular frequencies of the analytical solution for the motion
 of a single particle is marked by black dots. $\omega_{+} \approx 2.3$ MHz and $2\omega_{-} \approx 2.1$ MHz.}
 \label{fig:fraction_noint}
@@ -190,26 +201,45 @@ Intuitively this makes much sense. The force is applied to the particles over a 
 sync, the $\bold{E}$-field will decrease the kinetic energy of the particles for some part of this time, as it accelerates the particle in the
 direction opposite of its motion. If the applied force is strong, the particle will still have a net gain in kinetic energy. If the applied force is
 weak, this effect might stall the particles. The low amplitude oscillations give a better resolution because it is more dependent on syncing
- up with the natural frequency of the particles to actually provide a net gain in energy.
+ up with the natural frequency of the particles to provide a net gain in energy.
 
-The angular freqencies of the analytical solution for the motion of a single particle \ref{eq:omega_pm} is $\omega_{+} \approx 2.30$ and $\omega_{-} \approx 1.05$. These are marked in the figure
-as black dots. Notice that the highest resonance frequency appears to be dead in the centre of these.
-
+The angular frequencies of the analytical solution for the motion of a single particle \ref{eq:omega_pm} is $\omega_{+} \approx 2.30$ and $\omega_{-} \approx 1.05$. These are marked in the figure
+as black dots. Notice that the highest resonance frequency appears dead in the centre of these.
 
 
 %9.2
 To see the effect of Coulomb interactions on the resonance of the trap
-we perform simulations for the same duration in the region around the resonance frequencies we
-found.
-The results are shown in [some figure].
-(frequencies on x-axis fraction on the y-axis, this time with interactions)
+we perform simulations for the same duration and the same amount of particles
+in the region around the resonance frequencies we
+found. We chose to only simulate the amplitude $f = 0.1$ as this gave the sharpest troughs
+in the former simulation.
 
-We see that the resonance frequency has decreased. (or
-increased). The repulsive interactions prevent the particles from occupying the same region simultaneously. (if this is relevant) This might slow down the particles. It should take longer for
-a particle to move from one side of the trap to the other with obstacles. The momentum will distribute among the particles in a wave-like fashion. Don't know excactly how to
-express this.
-\newline
-Since the mean force of all the particles on a single particle is generally directed outwards from the trap
-(if the particles orbit around the centre, this seems reasonable to me) we expect the fraction
-of particles left in the trap to be smaller than in the case of no interactions.
+\begin{figure}
+\centering
+\includegraphics[width=1.\linewidth]{../figures/fraction_left_interaction.pdf}
+\caption{Fraction of particles left of the initial $100$ particles, the blue line is for interacting particles, 
+the green dotted line is for non-interacting particles. The perturbation amplitude is $f = 0.1$. }
+\label{fig:fraction_int}
+\end{figure}
 
+The results are shown in \autoref{fig:fraction_int}.
+Higher resolution shows that more frequencies are close together, not just one. This is
+true both in the case of single particles, ignoring interactions and with many particles.
+This might be due to the precessions of the particles in the $xy$-plane. Different frequencies might align
+up with different 'subcircles', as seen in \autoref{fig:xy_plane}. It might also be the case that it will align
+up with one such precession for the first kick and then shift by one for the next kick. This is plausible if the
+particles have a steady time period for one orbit about the centre.
+This is somewhat speculative. We need to find out if the orbits are steady, even in the case where we ignore
+the interactions. Probably the particle periods are only partially constant.
+
+In comparing the interacting particles to the non-interacting particles, we notice a slight
+shift in all the resonance frequencies. It appears to be constant, but this might be
+an effect of too low resolution. Alas, we do not know.
+
+A possible explanation of why the resonance frequencies are lower in the
+case of interacting particles might be because the particles can distribute the energy among
+themselves. Let us imagine one particle is being kicked, pushing the next particle 'in line', which again
+pushes the next particle and so forth. This highly idealized illustration can explain how a
+compression wave propagates through the particles in the trap. If some of the energy is bound to
+compression waves, we expect that the mean velocity of the particles is somewhat slower, making the
+orbital period longer. This is one reasonable explanation which we do not intend to verify.

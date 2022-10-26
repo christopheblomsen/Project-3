@@ -24,20 +24,38 @@ int main(){
     double d = 500.;
 
     std::vector<Particle> particles_in{p1};
+    std::vector<int> n{4000, 8000, 16000, 32000};
 
-    PenningTrap trap(particles_in, B0, V0, d);
+    for (int nk : n){
+        double dt = 50./nk;
+        for (int i = 0; i < 2; i++){
+            PenningTrap trap(particles_in, B0, V0, d);
+            trap.solve(dt, 50, false, i);
+        }
+
+    }
+    // for (int i = 0; i < 2; i++){
+
+    //     PenningTrap trap(particles_in, B0, V0, d);
+    //     double dt = 50./16000;
+    //     trap.solve(dt, 50, false, i);
+    // }
     // trap.interaction = true;
 
     // Initialize the time and position 
-    std::vector<int> n{4000, 8000, 16000, 32000};
-    for (int nk : n){
-        double dt = 50. / nk;
-        for (int i=0; i <= 1; i++){
-            trap.solve(dt, 50, true, i);
-        }
-    }
+    // std::vector<int> n{0.2}; //, 8000, 16000, 32000};
 
-    // ex8, uncomment bellow
+    // PenningTrap trap2(particles_in, B0, V0, d);
+    // trap2.solve(dt, 50, false, 1);
+    // for (int nk : n){
+    //     double dt = 1. / nk;
+    //     for (int i=0; i <= 1; i++){
+	//     //trap.solve(dt, 50, true, i);
+    //         trap.solve(dt, 1, false, i);
+    //     }
+    // }
+
+    // ex8
     // particles_in.push_back(p2);
     // PenningTrap ex8(particles_in, B0, V0, d);
 

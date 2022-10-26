@@ -6,9 +6,9 @@ r_RK = pa.cube()
 v_RK = pa.cube()
 t = pa.mat()
 
-r_RK.load("position_RK4.bin")
-v_RK.load("velocity_RK4.bin")
-t.load("time.bin")
+r_RK.load("position_RK4_16000.bin")
+v_RK.load("velocity_RK4_16000.bin")
+t.load("time_16000.bin")
 
 
 r_RK = np.array(r_RK)
@@ -21,8 +21,8 @@ vx_RK, vy_RK, vz_RK = v_RK[:, 0, 0], v_RK[:, 1, 0], v_RK[:, 2, 0]
 r_FE = pa.cube()
 v_FE = pa.cube()
 
-r_FE.load("position_FE.bin")
-v_FE.load("velocity_FE.bin")
+r_FE.load("position_FE_16000.bin")
+v_FE.load("velocity_FE_16000.bin")
 # t.load("time.bin")
 
 
@@ -32,6 +32,8 @@ v_FE = np.array(v_FE)
 
 x_FE, y_FE, z_FE = r_FE[:, 0, 0], r_FE[:, 1, 0], r_FE[:, 2, 0]
 vx_FE, vy_FE, vz_FE = v_FE[:, 0, 0], v_FE[:, 1, 0], v_FE[:, 2, 0]
+
+print(z_RK[0:5])
 
 # Analytical solution
 x0 = 20
@@ -65,4 +67,7 @@ circle2 = plt.Circle((0, 0), R_minus, color='g', fill=False,  label=r"$R_+ + R_-
 plt.plot(time, z_RK, label="RK4")
 plt.plot(time, z_FE, label="FE")
 plt.plot(time, z, label="Analytical")
+plt.legend()
 plt.show()
+
+print(f'FE: {z_FE[0:5]}')
