@@ -34,4 +34,13 @@ All the data files can be found in `code/data`. Where we have saved all the necc
 In this directory you can also find the `python` scripts to plot said figures.
 
 ## Report directory
-The report source code and accompanying `pdf` can be found in the report directory
+The report source code can be found in the `report` directory. To compile the pdf
+
+```
+pdflatex main
+biber main
+pdflatex main
+pdflatex main
+```
+
+`refs.org` is the refrence file needed for `biber`
