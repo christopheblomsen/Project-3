@@ -1,0 +1,14 @@
+We have looked into the motion of Ca$^+$-ions inside a Penning trap. Comparison
+with the analytical solution reveals that there is probably a bug in our code, as RK4 is slower to converge
+than FE. The error is smaller howerver, and for the simulations of one and two particles we take
+our results to be accurate enough for underpinning our qualitative description of the particle motion.
+For the simulations of $100$ particles our error analysis indicates that our results are highly untrustworthy. As our results seem to make sence physically it might be that the error in our error estimate is more catastrophic than the error in our simulations.
+In the case of two interacting particles they are exchanging momentum and energy, allowing them to
+occupy a larger region of the Penning trap both in real space and in phase space. The trajectories of the
+particles also become more disordered.
+We found a resonance frequencies of $\omega_r \approx 2.2$ MHz, between of the angular frequencies of
+the analytical solutions for the particle motion $2\omega_{-}$ and $\omega_{+}$. Redoing the simulations
+in this area with the effect from Coulomb interactions we found
+that there are multiple resonance frequencies around our original $\omega_r$. The frequencies were also
+slightly reduced when interactions between the particles were included, implying that the particles
+are orbiting the centre of the trap with a slightly longer orbital period.

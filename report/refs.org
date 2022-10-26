@@ -1,0 +1,517 @@
+#+TITLE: Refs
+
+* General physics refs...
+** @book{leinaas:klasmek,
+language = {english},
+author = {Jon Magne Leinaas},
+title = {Classical Mechanics and Electrodynamics},
+publisher = {World Scientific},
+year = 2019}
+* Math refs
+** Rottmann
+*** Rottmann full ref
+    @book{rottmann:full,
+    language={norsk},
+    author={Karl Rottmann},
+    title={Matematisk Formelsamling},
+    year={2019},
+    edition={1},
+    publisher={Universitetsforlaget}
+    }
+
+*** Rottmann trans integral
+@incollection{rottmann:trans,
+ language={norsk},
+ author={Karl Rottmann},
+ title={Bestemte integraler},
+ pages={149-166},
+ booktitle={Matematisk Formelsamling},
+ year={2019},
+ edition={1},
+ publisher={Universitetsforlaget}
+ }
+
+* Quantum mechanics refs
+** Griffiths
+    @book{griffiths:quantumn,
+    language={norsk},
+    author={David J. Griffiths, Darrel F Schroeter},
+    title={Introduction to quantum mechanics},
+    edition={3},
+    publisher={Cambridge University Press},
+    year={2018}
+    }
+** Sakurai
+    @book{sakurai:quantumn,
+    language={english},
+    author={J. J. Sakurai, Jim Napolitano},
+    title={Modern Quantum Mechanics},
+    edition={3},
+    publisher={Cambridge University Press},
+    year={2021}
+    }
+** Kompendium
+    @book{kompendium:quantumn,
+    language={norsk},
+    author={T. Engeland og M. Hjort-Jensen og S. Viefers og A. Raklev og E. G. Flekkøy},
+    title={Kompendium i FYS2140, Kvantefysikk},
+    edition={1},
+    publisher={Fysikk Institutt, Universitet i Oslo},
+    year={2017}
+    }
+
+* Oscilatting waves
+** Whole book
+    @book{arnt:oscilatting,
+    language={english},
+    author={Arnt Inge Vistnes},
+    title={Physics of Oscillations and Waves With use of Matlab and Python},
+    edition={1},
+    publisher={Springer},
+    year={2018},
+    translator={Razi Naqvi}
+    }
+
+* Computational physics
+** @book{morten:compphys,
+language={english},
+author={Morten Hjorth-Jensen},
+title={Computational Physics},
+edition={2015},
+publisher={Department of Physics, University of Oslo},
+year={2015}}
+* Astronomy
+** Articles
+*** IRAS19254-7245
+    @article{article:iras,
+    author={L. Vanzi and S. Bagnulo and E. Le Floc'h and  R. Maiolino and E. Pompei, W. Walsh},
+    title={Multi-wavelength Study of IRAS 19254-7245 - The Superanennae},
+    journal={Astronomy and astrophysics},
+    year={2002},
+    volume={1}}
+*** apex antenna efficiencies
+    @online{apex:antenna,
+    url={https://www.apex-telescope.org/telescope/efficiency/index.php.old},
+    title={APEX telescope efficiencies},
+    urldate={2021-11-05}}
+*** Splatalogue
+    @online{splat,
+    url={https://splatalogue.online/},
+    title={Splatalogue},
+    urldate={2021-11-05}}
+*** NGC1365
+**** Magnum Survey
+    @article{article:venturi,
+    author={G. Venturi and E. Nardini and A. Marconi and S. Carniani and M. Mingozzi and G. Cresci and F. Mannucci and G. Risaliti and R. Maiolino and B. Balmaverde and A. Bongiorno and M. Brusa and A. Capetti and C. Cicone and S. Ciroi and C. Feruglio and F. Fiore and A. Gallazzi and F. La Franca and V. Mainieri and K. Matsuoka and T. Nagao and M. Perna and E. Piconcelli and E. Sani and P. Tozzi and S. Zibetti},
+    title={MAGNUM survey: A MUSE-Chandra resolved view on ionized outflows and photoionization in the Seyfert galaxy NGC 1365},
+    journal={Astronomy and astrophysics},
+    year={2018},
+    volume={1}}
+** Lecture Notes
+*** AST3310
+**** Boris
+***** Full
+@article{boris:full,
+author={B.V. Gudiksen},
+title={AST3310: Astrophysical plasma and stellar interiors},
+year={2021},
+journal={Institute of Theoretical Astrophysics, University of Oslo}}
+***** Chap 3
+@incollection{boris:3,
+author={B.V. Gudiksen},
+title={Stellar engines},
+booktitle={AST3310: Astrophysical plasma and stellar interiors},
+pages={11-33},
+year={2021}}
+*** AST2210
+**** Claudia
+***** Lecture notes
+****** 6
+@misc{claudia:6,
+author={Claudia Cicone},
+title={Sub-millimeter/radio observations (single-dish)},
+year={2021},
+month={October}}
+
+* Exphil refs
+** pensum
+*** Pensum ref
+    @book{exphil:pensum,
+    language = {norsk},
+    title={Vite, være, gjøre},
+    author={Herman Cappelen, Ingvild Torsen og Sebastian Watzl},
+    year={2021},
+    publisher={Gyldendal},
+    edition={1}
+    }
+
+** Descartes
+*** Hele ref
+    @incollection{Descartes:hele,
+    language = {norsk},
+    author = {René Descartes},
+    title = {Meditasjoner over filosofiens grunnlag},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Asbjørn Aarnes},
+    pages = {32-41},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Asbjørn Aarnes}
+    }
+
+*** foerste
+    @incollection{Descartes:foerste,
+    language = {norsk},
+    author = {René Descartes},
+    title = {Første meditasjon. Om de ting som kan trekkes i tvil},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Asbjørn Aarnes},
+    pages = {32-35},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Asbjørn Aarnes}
+    }
+
+*** annen
+    @incollection{Descartes:annen,
+    language = {norsk},
+    author = {René Descartes},
+    title = {Annen meditasjon. Om den menneskelige ånds natur; og at den er kjenneligere enn legemet},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Asbjørn Aarnes},
+    pages = {35-41},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Asbjørn Aarnes}
+    }
+
+** Jaggar
+*** Ref hele
+    @incollection{Jaggar:hele,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {Kjærlighet og kunnskap: Emosjoner i feministisk epistemologi},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {135-157},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland, På Side 1}
+    }
+
+*** intro
+**** Intro ref
+    @incollection{Jaggar:intro,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {I    Introduksjon: Emosjoner i vestlig epistemologi},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {135-137},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+
+*** Jaggar Del 1
+**** Jaggar del1 ref
+    @incollection{Jaggar:del1,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {Første del: Emosjoner},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {137-144},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland, På Side 1}
+    }
+
+**** hva_er_emosjoner
+    @incollection{Jaggar:hva_er_emosjoner,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {II    Hva er emosjoner?},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {137-138},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+
+**** emosjoner_som_intensjonelle
+    @incollection{Jaggar:emosjoner_som_intensjonelle,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {III    Emosjoner som intensjonelle},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {138-140},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+
+**** emosjoner_som_sosiale
+    @incollection{Jaggar:emosjoner_som_sosiale,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {IV    Emosjoner som sosiale konstruksjoner},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {140-141},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland, På Side 1}
+    }
+
+**** emosjoner_som_aktiv
+    @incollection{Jaggar:emosjoner_som_aktiv,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {V    Emosjoner som aktivt engasjement},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {141-142},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+
+**** emosjoner_evaluering
+    @incollection{Jaggar:emosjoner_evaluering,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {VI    Emosjoner, evaluering og observasjon},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {138-140},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland, På Side 1}
+    }
+*** Jaggar Del 2
+**** Jaggar Del 2 ref
+    @incollection{Jaggar:del2,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {Del to: Epistemologi},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {144-157},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland, På Side 1}
+    }
+
+**** Myten om forskning
+    @incollection{Jaggar:myten_om_forskning,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {VII    Myten om nøytral forskning},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {144-146},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland, På Side 2}
+    }
+
+**** Myten om funksjon
+    @incollection{Jaggar:mytens_funksjon,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {VIII    Mytens ideologiske funksjon},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {146-148},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+
+**** Emosjenelt hegemoni
+    @incollection{Jaggar:emosjonelt_hegemoni,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {IX    Emosjonelt hegemoni og emosjonell subversjon},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {148-150},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+
+**** ulovlige_emosjoner
+    @incollection{Jaggar:ulovlige_emosjoner,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {X    Ulovlige emosjoner og feministisk teori},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {150-152},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+
+**** implikasjoner
+    @incollection{Jaggar:implikasjoner,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {XI    Noen implikasjoner av å anerkjenne emosjoners epistemiske potensial},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {152-154},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+
+**** konklusjon
+    @incollection{Jaggar:konklusjon,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {XII    Konklusjon},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {154},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+
+**** noter
+    @incollection{Jaggar:noter,
+    language = {norsk},
+    author = {Alison M. Jaggar},
+    title = {Noter},
+    booktitle = {Vite, være, gjøre},
+    publisher = {Gyldendal},
+    translator = {Vilhelm Krefting Hovland},
+    pages = {155-157},
+    edition = {1},
+    year = {2021},
+    note = {Oversatt av Vilhelm Krefting Hovland}
+    }
+** Galileo
+*** Andre brev
+@incollection{Galilei:andre_brev,
+language = {norsk},
+author = {Galileo Galilei},
+title = {Andre brev fra Galilei til Welser om solflekkene},
+booktitle = {Vite, være, gjøre},
+publisher = {Gyldendal},
+translator = {Vilhelm Krefting Hovland},
+pages = {49-56},
+edition = {1},
+year = {2021},
+note = {Oversatt av Vilhelm Krefting Hovland, På Side 3}
+}
+** Web
+*** @online{ManUp,
+author={Andrea Phelps},
+url={https://www.psychology.org.au/for-members/publications/inpsych/2018/June-Issue-3/Unpacking-the-Man-Up-documentary},
+title={Unpacking the 'Man Up' documentary},
+urldate={2021-04-29},
+note={På side 2}
+}
+*** @online{MeToo,
+author={Christina Pazzanese, Colleen Walsh},
+url={https://news.harvard.edu/gazette/story/2017/12/metoo-surge-could-change-society-in-pivotal-ways-harvard-analysts-say/},
+title={The women’s revolt: Why now, and where to},
+urldate={2021-04-29},
+note={På side 2}
+}
+*** @book{ibram:antiracist,
+author={Ibram X. Kendi},
+title={How to Be an Antiracist},
+publisher={One World},
+year={2019},
+edition={1},
+note={På side 3}
+}
+
+*** @online{iq:test,
+author={Stefan C. Dombrowski},
+url={https://ed.ted.com/lessons/the-dark-history-of-iq-tests-stefan-c-dombrowski#digdeeper},
+title={The dark history of IQ tests},
+urldate={2021-04-29},
+note={På side 3}
+}
+*** @book{Gould:Mismeasure,
+author={Stephen Jay Gould},
+title={The Mismeasure of Man},
+publisher={W. W. Norton \& Company},
+year={1980},
+edition={1},
+note={På side 3}
+}
+
+* Other literature
+** Sci fi
+*** The Three Body Problem
+    @book{Three:body,
+    title = {The Three-Body Problem},
+    author = {Liu Cixin},
+    year = {2008},
+    publisher = {Tor Books},
+    translator = {Ken Liu}
+    }
+* Movies
+** Coco
+*** Coco ref
+@misc{Coco:movie,
+title = {Coco},
+producer = {Darla K. Anderson},
+director = {Lee Unkrich},
+%year = {2017},
+publisher = {Walt Disney Pictures, Pixar Animation Studios},
+note = {Year: 2017,
+        Producer: Darla K. Anderson,
+        Director: Lee Unkrich,
+        Publisher: Walt Disney Pictures, Pixar Animation Studios,
+        På Side 1}
+}
+** Soul
+*** Soul ref
+@misc{Soul:movie,
+title = {Soul},
+producer = {Dana Murray},
+director = {Pete Docter},
+%year = {2020},
+publisher = {Walt Disney Pictures, Pixar Animation Studios},
+note = {Year: 2020,
+        Producer: Dana Murray,
+        Director: Pete Docter,
+        Publisher: Walt Disney Pictures, Pixar Animation Studios,
+        På Side 1}
+}
+* Tables
+** Physics table
+    @book{Gyldendal:table,
+    author={John Haugan, Eimund Aamot},
+    title={Gyldendals tabeller og formler i fysikk, Fysikk 1 og Fysikk 2},
+    year={2011},
+    edition={2},
+    publisher={Gyldendal}}

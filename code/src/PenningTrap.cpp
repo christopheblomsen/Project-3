@@ -112,7 +112,7 @@ arma::vec PenningTrap::external_E_field(arma::vec r, double t){
   if (arma::norm(r) < d){
     E(0) = r(0);
     E(1) = r(1);
-    E(2) = - r(2);
+    E(2) = - 2.*r(2);
 
     E = E*V02*(1 + amplitude*cos(frequency*t));
   }
@@ -267,6 +267,11 @@ void PenningTrap::solve(double dt, double total_time, bool interaction_in, int m
   r = arma::cube(3, n_par, n).fill(0.);
   t = arma::linspace(0, total_time, n);
 
+  for (int i = 0; i < particles.size(); i++){
+    r.slice(0).col(i) = particles[i].position;
+    v.slice(0).col(i) = particles[i].velocity;
+  }
+
   for (int j=0; j < n-1; j++){
       switch(model){
         case 0:
@@ -283,9 +288,15 @@ void PenningTrap::solve(double dt, double total_time, bool interaction_in, int m
     particles_left();
   }
 
-  t.save("time.bin");
-  r.save("position_"+method+"_"+n_string+".bin");
-  v.save("velocity_"+method+"_"+n_string+".bin");
+  t.save("time_"+n_string+".bin");
+  if (interaction){
+    r.save("position_"+method+"_"+n_string+"_interaction.bin");
+    v.save("velocity_"+method+"_"+n_string+"_interaction.bin");
+  }
+  else{
+    r.save("position_"+method+"_"+n_string+".bin");
+    v.save("velocity_"+method+"_"+n_string+".bin");
+  }
 }
 
 // Evolve the system one time step (dt) using Forward Euler
@@ -297,26 +308,26 @@ void PenningTrap::evolve_forward_Euler(double dt, int j, double t){
   std::vector<arma::vec> r_vector(N);
   std::vector<arma::vec> v_vector(N);
 
-  // Iterate over all particles
+  // // Iterate over all particles
   for (int i = 0; i < N; i++){
     v_1 = particles[i].velocity;
     r_1 = particles[i].position;
-
-    r.slice(j).col(i) = r_1;
-    v.slice(j).col(i) = v_1;
 
     F = total_force(i, t);
 
     a = F/mass_ion;
 
-    v_new = v_1 + a*dt;
-    r_new = r_1 + v_1*dt;
+    v_vector[i] = v_1 + a*dt;
+    r_vector[i] = r_1 + v_1*dt;
 
-    v.slice(j+1).col(i) = v_new;
-    r.slice(j+1).col(i) = r_new;
+  }
+  for (int i = 0; i < N; i++){
+    v.slice(j+1).col(i) = v_vector[i];
+    r.slice(j+1).col(i) = r_vector[i];
 
-    particles[i].position = r_new;
-    particles[i].velocity = v_new;
+    particles[i].position = r_vector[i];
+    particles[i].velocity = v_vector[i];
+
   }
 }
 
@@ -332,13 +343,10 @@ void PenningTrap::evolve_RK4(double dt, int j, double t){
     // Initialization
     int N = particles.size();
 
-    // Create a initial 'pictures' of our particle 
+    // Create a initial 'pictures' of our particle
     // Like this we can always access the intial position and velocity
     std::vector<Particle> particles_initial = particles;
 
-    // "Push" all particles one time step
-    evolve_forward_Euler(dt, j, t);
- 
     // l is for the velocity and k for the position
     std::vector<arma::vec> k1(N), k2(N), k3(N), k4(N);
     std::vector<arma::vec> l1(N), l2(N), l3(N), l4(N);
