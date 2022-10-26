@@ -89,6 +89,7 @@ for i in range(3):
     r = pa.cube()
     r.load('position_RK4_'+ iterations[i] + '.bin')
     r = np.array(r)
+<<<<<<< HEAD
     x = r[:, 0]
     y = r[:, 1]
     z = r[:, 2]
@@ -96,4 +97,16 @@ for i in range(3):
     rel.append(rel_err(r_analytical[i], r))
     plt.plot(time[i], rel[i])
 
+=======
+    x = r[:, 0, :]
+    y = r[:, 1, :]
+    z = r[:, 2, :]
+    r = np.array([x, y, z])
+    rel.append(rel_err(r_analytical[i], r))
+    plt.plot(time[i], rel[i], label=f'n = {iterations[i]}')
+
+plt.ylabel('Relative error')
+plt.xlabel('N')
+plt.legend()
+>>>>>>> refs/remotes/origin/main
 plt.show()

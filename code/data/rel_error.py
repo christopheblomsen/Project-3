@@ -135,8 +135,14 @@ ax1.plot(time_list[0], rel_err_RK4_4000, label = 'n = 4000') # log2 on the y-axi
 ax1.plot(time_list[1], rel_err_RK4_8000, label = 'n = 8000')
 ax1.plot(time_list[2], rel_err_RK4_16000, label = 'n = 16000')
 ax1.plot(time_list[3],rel_err_RK4_32000, label = 'n = 32000')
+<<<<<<< HEAD
 ax1.set_ylabel('Relative error [-]')
 ax1.set_xlim(0, 55)
+=======
+ax1.set_ylabel('log Relative error [-]')
+ax1.set_xlim(0, 55)
+ax1.set_yscale('log')
+>>>>>>> refs/remotes/origin/main
 ax1.set_title('Runge Kutta 4')
 
 ax2.plot(time_list[0], rel_err_FE_4000, label = 'n = 4000')
@@ -145,8 +151,14 @@ ax2.plot(time_list[2], rel_err_FE_16000, label = 'n = 16000')
 ax2.plot(time_list[3], rel_err_FE_32000, label = 'n = 32000')
 ax2.set_xlabel('t [$\mu$s]')
 ax2.set_xlim(0, 55)
+<<<<<<< HEAD
 ax2.set_ylabel('Relative error [-]')
 ax2.set_title('Forward Euler')
+=======
+ax2.set_ylabel('log Relative error [-]')
+ax2.set_title('Forward Euler')
+ax2.set_yscale('log')
+>>>>>>> refs/remotes/origin/main
 plt.legend()
 plt.savefig('convergence.pdf')
 plt.show()
