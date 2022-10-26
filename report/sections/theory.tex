@@ -1,0 +1,170 @@
+%% %Explain what a Penning trap is:
+%% %revise: read again to check the continuity
+%% %do we use all the results we have derived?
+An illustration of a Penning trap is in \autoref{fig:penning}, it
+consists of three electrodes, two caps and one ring.
+The caps and the ring has opposite charges. When the caps are positive, as shown in \autoref{fig:penning}
+they set up an $\bold{E}$-field given by
+\begin{equation}
+V(x, y, z) = \frac{V_0}{2d^2}{2z^2 - x^2 - y^2}.
+\end{equation}
+
+Where $V_0$ indicates the strength of the potential and $d$ is a measure of the size of the trap.
+revise(details can be added here if we find it relevant)
+This potential has an unstable equilibrium along a verticle line in the centre of the ring.
+The particles we will be studying are positive we need to prevent them from being pulled to the negatively
+charged ring electrode. To do this, we place the entire trap inside a magnet so that there is a constant
+magnetic field within the trap
+
+\begin{equation}
+\bold{B} = B_0 \bold{e}_z.
+\end{equation}
+
+Since the Lorentz force on the particles is perpendicular to the magnetic field and their direction of
+motion, a sufficiently strong magnetic field will force the particles to orbit around the centre of the trap
+and not escape or hit the negative electrode.
+
+%todo: Derive the equations of motion and stuff.
+Newton's second law can find the equations of motion for a positive particle within the trap. The
+force on the particle is the Lorentz force. Since we are only trapping
+single Ca$^+$-ions, we can safely neglect gravity.
+
+The Lorentz force is given by
+\begin{equation}
+\bold{F} = q\bold{E} + q\dot{\bold{r}} \times \bold{B},
+\end{equation}
+
+where $q$ is the particle's charge, $\bold{r}$ is the position vector and $\bold{B}$ is the magnetic field vector.
+
+The gradient gives the electric field
+of the electric potential
+\begin{equation}
+\bold{E} = -\nabla V = -\frac{V_0}{d^2}\left(2 \bold{e}_z - x\bold{e}_x - y\bold{e}_y\right),
+\end{equation}
+
+and the cross product of the velocity and the $\bold{B}$-field can be written as
+
+\begin{equation}
+\dot{\bold{r}} \times \bold{B} = B_0 \dot{y} \bold{e}_x - B_0 \dot{x} \bold{e}_y.
+\end{equation}
+
+Thus the equations of motion can be written as
+\begin{align}
+      \ddot{x} - \omega_{0}\dot{y} - \frac{1}{2}\omega_{z}^{2}x &= 0, \label{eq:eom_x}\\
+  \ddot{y} + \omega_{0}\dot{x} - \frac{1}{2}\omega_{z}^{2}y &= 0, \label{eq:eom_y}\\
+  \ddot{z} + \omega_{z}^{2}z &= 0, \label{eq:eom_z}
+\end{align}
+
+where we have defined $\omega_0$ and $\omega_z$ by
+\begin{align}
+\omega_0 \equiv& \frac{qB_0}{m}, \label{eq:omega_0} \\
+\omega_z^2 \equiv& \frac{2qV_0}{md^2}. \label{eq:omega_z} \\
+\end{align}
+
+For simplicity.
+\autoref{eq:eom_x} and \autoref{eq:eom_y} are coupled, but can write them as one equation by defining
+
+\begin{equation}
+f(t) = x(t) + iy(t).
+\end{equation}
+
+Taking the double derivative of this, we obtain
+
+\begin{align}
+\ddot{f} =& \ddot{x} + i\ddot{y}, \\
+=& \omega_0\dot{y} + \frac{1}{2}\omega_z^2x - i\omega_0\dot{x} + i\frac{1}{2}\omega_z^2y, \\
+=& \omega_0\left(\dot{y} - i\dot{x}\right) + \frac{1}{2} \omega_z^2\left(x + iy\right), \\
+=& -i\omega_0 \dot{f} + \frac{1}{2}\omega_z^2f,
+\end{align}
+
+where we have inserted $\ddot{x}$ and $\ddot{y}$ from \autoref{eq:eom_x} and \autoref{eq:eom_y}. The equation for $f$ has analytical solutions on the form (revise: add citation)
+
+\begin{equation}
+f(t) = A_+e^{-i(\omega_+t + \phi_+)} + A_-e^{-i(\omega_-t  + \phi_-)},
+\label{eq:f_gen_sol}
+\end{equation}
+
+
+where $\phi_{\pm}$ are initial phases,  $A_{\pm}$ are the initial amplitudes,
+and the angular frequencies $\omega_{\pm}$ are given by
+\begin{equation}
+\omega_\pm = \frac{\omega_0 \pm \sqrt{\omega_0^2 - 2\omega_z^2}}{2}
+\label{eq:omega_pm}
+\end{equation}
+
+The position in the $xy$-plane, contained in $f$, will grow unboundedly when $\omega_{\pm}$ is a
+complex number.
+For the particles to be trapped, we thus need $\omega_{\pm}$ to be real numbers. We achieve this when
+\begin{equation}
+\omega_0^2 - 2\omega_z^2 \geq 0.
+\end{equation}
+
+Using \autoref{eq:omega_0} and \autoref{eq:omega_z} we can write this as
+\begin{equation}
+\frac{q}{m} \geq \frac{4V_0}{B_0^2d^2}.
+\end{equation}
+
+This indicates that the system is more stable when the particles have a low mass relative to their charge.
+Inertial effects will then be less prominent. We see that it is easier to trap particles when the magnetic
+field and size of the trap are large relative to the electric field. The increasing strength of the $\bold{B}$-field
+will make the particle orbits narrower. Increasing the size reduces the need for a strong $\bold{B}$-field,
+as the particles can have a wider orbit without collapsing onto the ring.
+
+Assuming the particle is trapped, we can use \autoref{eq:f_gen_sol} to find upper and lower bounds on the
+position of the particle given by its initial position.
+
+We rewrite the positions $x(t) = \mathcal{R}(f(t))$, and $y(t) = \mathcal{I}(f(t))$ using Eulers formula
+\begin{align}
+x(t) &= A_+ \cos(\omega_+t + \phi_+) + A_- \cos(\omega_-t + \phi_-) \\
+y(t) &= -A_- \sin(\omega_- t + \phi_-) -A_+ \sin(\omega_+ t + \phi_+).
+\end{align}
+
+The distance from the centre of the trap is $D^2 = x^2 + y^2$. Inserting the above expressions for
+$x(t)$ and $y(t)$ we find
+
+\begin{equation}
+D^2 = A_+^2 + A_-^2 + 2A_+A_-\cos((\omega_+ - \omega_-)t + \varphi),
+\end{equation}
+
+where $\varphi := \phi_+ - \phi_-.$
+We find the largest and smallest distance from the centre by maximizing and minimizing the
+cosine term. This yields an upper bound $D_{\text{max}} = |A_{+} + A_{-}|$ and a lower bound
+$D_{\text{min}} =  \sqrt{A_+^2 + A_-^2 - 2A_+A_-} = |A_+ - A_-|$.
+
+A Penning trap is not limited to trapping only single particles. We need to
+consider the Coulomb interactions between multiple particles that will be trapped. The electric field from $N$
+particles with charge $q>0$ is the sum of each particle field. We rewrite it as
+
+\begin{equation}
+\bold{E} = k_e\sum_{j=1}^Nq\frac{\bold{r} - \bold{r}_j}{|\bold{r} - \bold{r}_j|^3},
+\end{equation}
+
+where $k_e$ is the Coulomb constant, $\bold{r_i}$ is the particle position and
+\footnote{Except at $\bold{r} = \bold{r}_i$, since this is undefined.}
+$r$ is an arbitrary position. The force on each particle from the electric field is $\bold{F}_i = q\bold{E}_i$,
+and the charge times the electric field in the particle's position.
+
+We can write the equations of motion for particle number $i$ as 
+\begin{align}
+  \ddot{x} - \omega_{0}\dot{y} - \frac{1}{2}\omega_{z}^{2}x -\frac{k_eq^2}{m}\sum_{j\neq i}
+  \frac{x_i - x_j}{|\bold{r}_i - \bold{r}_j|^3} &= 0, \label{eq:eom_inter_x}\\
+  \ddot{y} + \omega_{0}\dot{x} - \frac{1}{2}\omega_{z}^{2}y - \frac{k_eq^2}{m}\sum_{j\neq i}
+\frac{y_i - y_j}{|\bold{r}_i - \bold{r}_j|^3}
+&= 0, \label{eq:eom_inter_y}\\
+  \ddot{z} + \omega_{z}^{2}z -\frac{k_eq^2}{m}\sum_{j\neq i}
+  \frac{z_i - z_j}{|\bold{r}_i - \bold{r}_j|^3} &= 0, \label{eq:eom_inter_z}
+\end{align}
+
+Each particle can be thought of as a small current. Charges in motion will set up a weak magnetic field
+according to Amperes law
+\begin{equation}
+\nabla \times \bold{B} = \mu_0 \left(\bold{J} + \varepsilon_0 \frac{\partial \bold{E}}{\partial t}\right),
+\end{equation}
+
+where $\mu_0$ is the magnetic permeability of the vacuum and $\varepsilon_0$ is the electric permittivity of
+the vacuum. We neglect this magnetic field's effect on the particles' motion. If many particles
+fly in opposite directions, we expect the contributions from each of them to cancel out.
+In comparison, the effect from many like-charged particles will add up. We, therefore, expect this
+to be a more prominent effect in our simulations.
+revise: $\mu$
+smaller than $k_e$? Give reasons for this negligence.

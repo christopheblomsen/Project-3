@@ -1,0 +1,115 @@
+todo:
+
+-present algorithms FE and RK4 and explain how they are applied in
+the Penning trap.\linebreak
+-also mention how particle interactions are calculated \linebreak
+-probably lots of other stuff
+\\
+
+
+
+\subsection{Numerical}
+Since calculating the analytical solution for $N$ Ca$^{+}$ ions is going to be hard,
+we will instead use our machines' power. We want to solve the equations of motion
+\ref{eq:eom_inter_x}, \ref{eq:eom_inter_y} and \ref{eq:eom_inter_z} numerically.
+
+\subsubsection{Forward Euler} \label{sec:forward-euler}
+We start by deriving the Forward Euler method.
+\begin{align}
+  \frac{\dd{x}}{\dd{t}} &= f(t, x)\\
+  &\Downarrow\nonumber\\
+  \frac{x_{i+1}  - x_{i}}{h} + \mathcal{O}(h) &= f_{i}\\
+  x_{i+1} &= x_{i} + hf_{i} + \mathcal{O}(h^{2}) \label{eq:12}
+\end{align}
+Where $h$ is the step size, and $\mathcal{O}(h^{2})$ is the remaining terms.
+If we truncate~(\ref{eq:12})
+\begin{align}
+  x_{i+1} = x_{i} + hf_{i} \label{eq:13}
+\end{align}
+This then has a truncation error of $\mathcal{O}(h^{2})$ and a global error of $\mathcal{O}(h)$.
+However, we have a second-order differential equation. So using the same method but with
+\begin{align}
+  \frac{\dd^{2}{x}}{\dd{t^{2}}} &= f\left(t, x, \frac{\dd{x}}{\dd{t}}\right).
+\end{align}
+We will instead have
+\begin{align}
+  v_{i+1} &= v_{i} + hf_{i}\label{eq:14}\\
+  x_{i+1} &= x_{i} + hv_{i} \label{eq:16}
+\end{align}
+Where it should be noted that you would get the Euler-Cromer method if in (\ref{eq:16}) you used $v_{i+1}$ instead of $v_{i}$.
+The function $f$ is, in our case, going to be the particle's acceleration, which we find using Newton's second law. <++> add ref here <++>
+So the full algorithm is as follows:
+
+\begin{align}
+  \mathbf{a}_{i} &= \frac{\mathbf{F}_{i}}{m}\\
+  \mathbf{v}_{i+1} &= \mathbf{v}_{i} + h\mathbf{a}_{i}\\
+  \mathbf{x}_{i+1} &= \mathbf{x}_{i} + h\mathbf{v}_{i}\\
+\end{align}
+
+
+Where $\mathbf{a}$ is the 3D acceleration vector, $\mathbf{F}$ is the 3D force vector,
+$\mathbf{v}$ is the velocity vector, $\mathbf{x}$ is the position vector, and $m$ is the mass.
+We use the same mass since we will only have one type of ion in our trap.
+
+\subsubsection{Runge Kutta 4}
+The Runge-Kutta method is an extension of the forward Euler method described in \ref{sec:forward-euler}.
+However, we do it four times instead of calculating the slope only once.
+The general approach is that for the first slope value $k_{1}$ is found using the \ref{sec:forward-euler}.
+Then for the second slope value $k_{2}$ is the slope at the midpoint of the interval from $t$ to $t + h$.
+Then we recalculate the midpoint slope using the $k_{2}$ value.
+Before we calculate the slope at $t + h$ to get the $k_{4}$.
+\begin{align}
+  k_{1} &= f\left(t_{n}, x_{n}\right)\\
+  k_{2} &= f\left(t_{n} + \frac{h}{2}, x_{n} + h \frac{k_{1}}{2}\right)\\
+  k_{3} &= f\left(t_{n} + \frac{h}{2}, x_{n} + h \frac{k_{2}}{d}\right)\\
+  k_{4} &= f\left(t_{n} + h, x_{n} + hk_{3}\right)
+\end{align}
+
+Before the next step is calculated from
+\begin{align}
+  x_{n+1} &= x_{n} + \frac{1}{6}\left(k_{1} + 2k_{2} + 2k_{3} + k_{4}\right)h.
+\end{align}
+
+Now for our specific case, we need to have one coefficient for the positions and the velocities.
+Then we need to calculate all the particles' coefficients before moving on to the next coefficient.
+
+
+So our specific algorithm will have this shape:
+\begin{lstlisting}[language=C]
+// Use the forward Euler method to move all particles one step
+evolve_forward_Euler(i, t);
+
+// For all the particles
+  l1[n] = h * F(n, t);
+  k1[n] = h * v_[n];
+
+// For all the particles
+  position[n+1] = position[n] + k1[n]/2.;
+  velocity[n+1] = velocity[n] + l1[n]/2.;
+
+// For all particles
+  l2[n] = h * F(n, t + 0.5*h);
+  k2[n] = h * velocity[n+1];
+
+// For all particles
+  position[n+1] = position[n] + k2[n] / 2.;
+  velocity[n+1] = velocity[n] + l2[n] / 2.;
+
+// For all particles
+  l3[n] = h * F(n, t + 0.5*h);
+  k3[n] = h * velocity[n+1];
+
+// For all particles
+  position[n+1] = position[n] + k3[n];
+  velocity[n+1] = velocity[n] + l3[n];
+
+// For all particles
+  l4[n] = h * F(n, t + h);
+  k4[n] = h * velocity[n+1];
+
+// For all particles
+  position[n+1] = position[n] + (k1[n] + 2.*k2[n] + 2.*k3[n] + k4[n]) / 6.;
+  velocity[n+1] = velocity[n] + (l1[n] + 2.*l2[n] + 2.*l3[n] + l4[n]) / 6.;
+\end{lstlisting}
+
+Where \lstinline{F(n, t)} is the force on the \lstinline{n} particle at time $t$.
