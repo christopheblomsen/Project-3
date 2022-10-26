@@ -12,7 +12,7 @@
 # @file
 # @version 0.1
 
-all: compile link run clean
+all: compile link clean
 
 Particle:
 	g++ -c -I include src/Particle.cpp
@@ -20,13 +20,20 @@ Particle:
 PenningTrap:
 	g++ -c -I include src/PenningTrap.cpp
 
-full:
+main:
+	g++ -c -I include main.cpp
+
+ex9:
 	g++ -c -I include ex9.cpp
 
-compile: Particle PenningTrap full
+give_me_omega:
+	g++ -c -I include give_me_omega.cpp
+
+compile: Particle PenningTrap main ex9 
 
 link:
 	g++ -o ex9 Particle.o PenningTrap.o ex9.o -larmadillo -O2
+	g++ -o main Particle.o PenningTrap.o main.o -larmadillo -O2
 
 run:
 	./ex9
